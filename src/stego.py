@@ -52,14 +52,6 @@ mid.save('src/midi_files/new_song.mid')
 
 mid = mido.MidiFile('src/midi_files/new_song.mid')
 
-# for i, track in enumerate(mid.tracks):
-#     print('Track {}: {}'.format(i, track.name))
-#     if i == 6:
-#         for msg in track:
-#             print(msg)
-
-# print(len(mid.tracks))
-
 int_list = []
 
 for messages in mid.tracks[len(mid.tracks) - 1]:

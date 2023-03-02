@@ -13,7 +13,7 @@ track = mido.MidiTrack()
 mid.tracks.append(track)
 
 # this is the secret ascii message that will be embedded in the midi file
-message = 'Kentaro'
+message = 'Hello Dr. G'
 
 # turn the message into an array of individual characters
 message_list = [*message]
@@ -37,5 +37,9 @@ for j in message_list_hex:
 for k in message_list_int:
     track.append(mido.Message('note_on', note= k, velocity=0, time=40))
 
+output = 'src/midi_files/new_song.mid'
 # save the midi as a new file
-mid.save('src/midi_files/new_song.mid')
+mid.save(output)
+
+# print out
+print(f"Encoded following message in {output}: {message}")

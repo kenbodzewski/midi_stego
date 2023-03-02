@@ -37,5 +37,8 @@ char_list = []
 for hex in hex_list:
     char_list.append(hex_to_message(hex))
 
-# print the hidden message by joining the chars in char_list into a string
-print(''.join(char_list))
+## store the message by joining the array
+message = ''.join(char_list)
+
+# print the hidden message 
+print(f"Hidden message: {message}")
