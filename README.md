@@ -1,3 +1,3 @@
-## Repo for Ken's CY 5110 Audio Steganography, Semester Long Project for Digital Forensics CY5110
+## Repo for Ken's CY 5210 Audio Steganography, Semester Long Project for Digital Forensics
 
 Currently a work in progress. This program will be a demonstration on how to hide a message in a MIDI file. The first step will be to hide it in a new track specifically created just to hold a message that doesn't impact the audio output in any way. The next step will be to use least significant bit steganography to encode the message into an existing track without affecting the sound to a degree where it is detectable.
