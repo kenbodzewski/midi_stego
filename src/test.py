@@ -1,36 +1,16 @@
 import time
 import mido
 
-mid = mido.MidiFile('src/midi_files/MIDI_sample.mid')
-#mid = mido.MidiFile('src/midi_files/Am_I_Blue_AB.mid')
+midi = mido.MidiFile('src/midi_files/castles.mid')
 
-print('Before:')
+# a list of the tracks in the midi file
+tracks = midi.tracks
 
-for i, track in enumerate(mid.tracks):
-    print('Track {}: {}'.format(i, track.name))
-    # for msg in track:
-    #     print(msg)
+longest = 0
 
-# for messages in mid.tracks[1]:
-#     print(messages)
+for i in range(len(tracks)):
+    if len(tracks[i]) > longest:
+        longest = i
 
-# print(mid.tracks[1])
+print(len(tracks[longest]))
 
-print('After:')
-
-track = mido.MidiTrack()
-mid.tracks.append(track)
-track.append(mido.Message('program_change', program=12, time=50))
-track.append(mido.Message('note_on', note=64, velocity=64, time=32))
-track.append(mido.Message('note_off', note=64, velocity=127, time=32))
-mid.save('src/midi_files/new_song.mid')
-
-
-mid = mido.MidiFile('src/midi_files/new_song.mid')
-
-for i, track in enumerate(mid.tracks):
-    print('Track {}: {}'.format(i, track.name))
-    for msg in track:
-        print(msg)
-
-print(len(mid.tracks))

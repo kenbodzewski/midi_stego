@@ -2,7 +2,7 @@ import time
 import mido
 
 # import functions from local file for conversions
-from text_conversion import message_to_hex, hex_to_int, hex_to_message
+from utils import message_to_hex, hex_to_int, hex_to_message
 
 # bring in the midi file that you want to encode with a message
 mid = mido.MidiFile('src/midi_files/MIDI_sample.mid')

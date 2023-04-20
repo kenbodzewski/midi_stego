@@ -1,8 +1,9 @@
-import time
+# external imports
+# import time
 import mido
 
 # import functions from local file for conversions
-from text_conversion import message_to_hex, hex_to_int, hex_to_message
+from utils import message_to_hex, hex_to_int, hex_to_message
 
 # bring in the midi file that you want to encode with a message
 mid = mido.MidiFile('src/midi_files/MIDI_sample.mid')
@@ -13,7 +14,7 @@ track = mido.MidiTrack()
 mid.tracks.append(track)
 
 # this is the secret ascii message that will be embedded in the midi file
-message = 'Hello Dr. G'
+message = 'Hello Dr. Gary Cantrell'
 
 # turn the message into an array of individual characters
 message_list = [*message]
