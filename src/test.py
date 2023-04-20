@@ -6,11 +6,17 @@ midi = mido.MidiFile('src/midi_files/castles.mid')
 # a list of the tracks in the midi file
 tracks = midi.tracks
 
-longest = 0
+track_lengths = []
 
 for i in range(len(tracks)):
-    if len(tracks[i]) > longest:
-        longest = i
+    track_lengths.append(len(tracks[i]))
 
-print(len(tracks[longest]))
+print(track_lengths)
+
+longest_track_index = track_lengths.index(max(track_lengths))
+
+print(longest_track_index)
+
+print(len(tracks[longest_track_index]))
+
 

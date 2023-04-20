@@ -49,19 +49,6 @@ def binary_to_string(binary_strings):
     return message
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 # converts an ascii string into a hex string
 def message_to_hex(message):
     hex_message = message.encode('ascii').hex()
