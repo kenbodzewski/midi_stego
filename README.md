@@ -6,16 +6,16 @@ This repo contains two audio (midi) steganography programs:
 
 2. The second pair of programs are lsb_encode.py and lsb_decode.py. These are a little bit more complicated. Rather than creating a new track and adding notes with no volume, they instead alter the data in an existing track in such a subtle way that it is undetectable (to my ears). Here are the steps for LSB encoding the message into the midi file:
 
-        a. The first step is to find the longest track in the midi file and count how many note_on messages there are in the track. Then you can calculate how long the hidden message can be without exceeding the space available in the track.
+    a. The first step is to find the longest track in the midi file and count how many note_on messages there are in the track. Then you can calculate how long the hidden message can be without exceeding the space available in the track.
 
-        b. Create a message that you want to encode in the midi file. Append to the front of the message the number of characters in the message, this way the decoder knows how many characters to decode from the midi track.
+    b. Create a message that you want to encode in the midi file. Append to the front of the message the number of characters in the message, this way the decoder knows how many characters to decode from the midi track.
 
-        c. One character at a time convert the string message into a list of 8-bit strings such that each 8-bit string represents one character.
+    c. One character at a time convert the string message into a list of 8-bit strings such that each 8-bit string represents one character.
 
-        d. Embed the message into the midi track using least significant bit encoding.
-            * Iterate through the midi track and list of 8-bit strings at the same time, altering the least significant bit in each 'note_on' messages of the midi track, to match that of the bit in the bit string (adding or subtracting 1).
-        
-        e. Save the modified midi file, and print the message that you are hiding to the command line.
+    d. Embed the message into the midi track using least significant bit encoding.
+        * Iterate through the midi track and list of 8-bit strings at the same time, altering the least significant bit in each 'note_on' messages of the midi track, to match that of the bit in the bit string (adding or subtracting 1).
+    
+    e. Save the modified midi file, and print the message that you are hiding to the command line.
 
 Here are the steps for decoding the LSB message an encoded midi file:
 
