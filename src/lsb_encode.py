@@ -8,9 +8,14 @@ from utils import string_to_binary, binary_to_string
 ###############################################################################
 ####################        PUT YOUR MESSAGE HERE        ######################
 ###############################################################################
-message = 'New message'
 
-input_file = 'src/midi_files/castles.mid'
+message = 'How long of a message can I put in this midi?'
+
+###############################################################################
+###############################################################################
+
+# file path to midi file
+input_file = 'src/midi_files/MIDI_sample.mid'
 
 # create a MidiFile object
 midi = mido.MidiFile(input_file)

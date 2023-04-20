@@ -41,4 +41,4 @@ for hex in hex_list:
 message = ''.join(char_list)
 
 # print the hidden message 
-print(f"Hidden message: {message}")
+print(f"Hidden message:\n\t {message}")
