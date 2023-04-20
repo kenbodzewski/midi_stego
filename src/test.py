@@ -19,4 +19,7 @@ print(longest_track_index)
 
 print(len(tracks[longest_track_index]))
 
+# largest possible value that chr() function takes
+character = chr(1114111)
 
+print(character)

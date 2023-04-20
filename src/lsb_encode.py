@@ -4,8 +4,16 @@ import mido
 # import my own tools from utils
 from utils import string_to_binary, binary_to_string
 
+
+###############################################################################
+####################        PUT YOUR MESSAGE HERE        ######################
+###############################################################################
+message = 'New message'
+
+input_file = 'src/midi_files/castles.mid'
+
 # create a MidiFile object
-midi = mido.MidiFile('src/midi_files/surfingalien.mid')
+midi = mido.MidiFile(input_file)
 
 # a list of the tracks in the midi file
 tracks = midi.tracks
@@ -50,9 +58,6 @@ message_max =  total_note_on // 8
 ###############################################################################
 #######     append the message length to the front of the string      #########
 ###############################################################################
-# create the message
-message = 'Wanted to change it again'
-
 # find the length of the message (and add three for the length 'message_length')
 # and typecast it to a string
 message_length = str(len(message) + 3)
@@ -98,8 +103,13 @@ for i in range(len(track)):
         bit = binary[x][y % 8]
         # if remainder of the velocity of the note_on does not match the bit from above
         if ((track[i].velocity % 2) != int(bit)):
-            # then add one to the velocity of the note so that it now matches
-            track[i].velocity += 1
+            # make sure that the track velocity isnt 127, if it is you need to subtract
+            # rather than add because 127 is the max value
+            if(track[i].velocity == 127):
+                track[i].velocity -= 1
+            # else add one to the velocity of the note so that it now matches
+            else:
+                track[i].velocity += 1
         # x should be set to y integer division 8 so that it resets every 8 character
         x = y // 8
         # add one to y so that we move to the next character
@@ -114,3 +124,5 @@ output = 'src/midi_files/new.mid'
 
 # save the midi as a new file
 midi.save(output)
+
+print(f'The following message was hidden in {output}\n\t', message[3:])

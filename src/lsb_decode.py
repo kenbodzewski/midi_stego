@@ -4,8 +4,11 @@ import mido
 # import my own tools from utils
 from utils import string_to_binary, binary_to_string
 
+# input_file is the file location
+input_file = 'src/midi_files/new.mid'
+
 # create a MidiFile object
-midi = mido.MidiFile('src/midi_files/new.mid')
+midi = mido.MidiFile(input_file)
 
 # a list of the tracks in the midi file
 tracks = midi.tracks
@@ -55,23 +58,27 @@ message_length = []
 for i in range(0, len(message_length_binary), 8):
     message_length.append(message_length_binary[i:i+8])
 
-print(message_length)
-
-num = int(binary_to_string(message_length))
-
-print(num * 8)
+# convert message_length from bit strings to a string containing the length 
+# of the message, then typecast it to an int
+length = int(binary_to_string(message_length))
 
 # create an empty string for storing one long bit string
 binary_string = ''
 
-# for i in length of the track
-for i in range(len(track)):
+
+# while the length of the binary string that we are pulling from the track
+# is less than the length that we pulled from the front of the string
+# keep looping through the track and adding the least significant bits
+i = 0
+while (len(binary_string) < length * 8):
     # if the message type is note_on
     if (track[i].type == 'note_on'):
         # set bit to the velocity of the note_on message modulo 2 (either 0 or 1)
         bit = track[i].velocity % 2
         # append the bit to the end of the bit string
         binary_string += str(bit)
+    # increment i so there is no infinite loop
+    i += 1
 
 # create an empty list for holding the 8-bit strings
 eight_bit_strings = []
@@ -81,7 +88,7 @@ for i in range(0, len(binary_string), 8):
     eight_bit_strings.append(binary_string[i:i+8])
 
 # assign to message the string resulting from converting the 8-bit strings to characters
-message = binary_to_string(eight_bit_strings)
+message = binary_to_string(eight_bit_strings)[3:]
 
 # print the message
-print(message)
+print(f'The following message was found in {input_file}\n\t', message)
