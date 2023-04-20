@@ -15,7 +15,7 @@ This repo contains two audio (midi) steganography programs:
     * Embed the message into the midi track using least significant bit encoding.
         * Iterate through the midi track and list of 8-bit strings at the same time, altering the least significant bit in each 'note_on' messages of the midi track, to match that of the bit in the bit string (adding or subtracting 1).
     
-    * Save the modified midi file, and print the message that you are hiding to the command line.\n\n
+    * Save the modified midi file, and print the message that you are hiding to the command line.<br><br>
 
     Here are the steps for decoding the LSB message an encoded midi file:
 
