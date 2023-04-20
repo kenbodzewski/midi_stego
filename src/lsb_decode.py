@@ -5,7 +5,7 @@ import mido
 from utils import string_to_binary, binary_to_string
 
 # input_file is the file location
-input_file = 'src/midi_files/new.mid'
+input_file = 'midi_files/new.mid'
 
 # create a MidiFile object
 midi = mido.MidiFile(input_file)

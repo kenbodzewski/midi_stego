@@ -4,8 +4,11 @@ import mido
 # import functions from local file for conversions
 from utils import message_to_hex, hex_to_int, hex_to_message
 
+# input file string
+input_file = 'midi_files/new_song.mid'
+
 # bring in the midi file with a hidden message
-mid = mido.MidiFile('src/midi_files/new_song.mid')
+mid = mido.MidiFile(input_file)
 
 # create an empty array
 int_list = []
@@ -41,4 +44,4 @@ for hex in hex_list:
 message = ''.join(char_list)
 
 # print the hidden message 
-print(f"Hidden message:\n\t {message}")
+print(f"Hidden message found in {input_file}:\n\t{message}")

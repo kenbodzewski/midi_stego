@@ -6,7 +6,7 @@ import mido
 from utils import message_to_hex, hex_to_int, hex_to_message
 
 # bring in the midi file that you want to encode with a message
-mid = mido.MidiFile('src/midi_files/MIDI_sample.mid')
+mid = mido.MidiFile('midi_files/MIDI_sample.mid')
 
 # create a midi track
 track = mido.MidiTrack()
@@ -14,7 +14,7 @@ track = mido.MidiTrack()
 mid.tracks.append(track)
 
 # this is the secret ascii message that will be embedded in the midi file
-message = 'Hello Dr. Gary Cantrell'
+message = 'Hi Dr. Gary Cantrell'
 
 # turn the message into an array of individual characters
 message_list = [*message]
@@ -38,9 +38,9 @@ for j in message_list_hex:
 for k in message_list_int:
     track.append(mido.Message('note_on', note= k, velocity=0, time=40))
 
-output = 'src/midi_files/new_song.mid'
+output = 'midi_files/new_song.mid'
 # save the midi as a new file
 mid.save(output)
 
 # print out
-print(f"Encoded following message in {output}: {message}")
+print(f"Encoded following message in {output}:\n\t{message}")

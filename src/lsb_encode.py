@@ -9,13 +9,13 @@ from utils import string_to_binary, binary_to_string
 ####################        PUT YOUR MESSAGE HERE        ######################
 ###############################################################################
 
-message = 'How long of a message can I put in this midi?'
+message = 'How long of a message can I encode in this midi?'
 
 ###############################################################################
 ###############################################################################
 
 # file path to midi file
-input_file = 'src/midi_files/MIDI_sample.mid'
+input_file = 'midi_files/MIDI_sample.mid'
 
 # create a MidiFile object
 midi = mido.MidiFile(input_file)
@@ -125,7 +125,7 @@ for i in range(len(track)):
 #####################     save the new midi file       ########################
 ###############################################################################
 # string for holding the file path for the midi file you want to save
-output = 'src/midi_files/new.mid'
+output = 'midi_files/new.mid'
 
 # save the midi as a new file
 midi.save(output)
